@@ -4,6 +4,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
+use frontend\components\SmallBody;
 
 $this->title = 'My Yii Application Blog';
 ?>
@@ -17,7 +18,9 @@ $this->title = 'My Yii Application Blog';
                 <div class="post-preview">
                     <a href="<?=Url::toRoute(['/posts/post', 'id' => $post->slug])?>">
                         <h2 class="post-title"><?=$post->title?></h2>
-                        <h3 class="post-subtitle"><?=$post->body?></h3>
+                        <h3 class="post-subtitle">
+                            <?=SmallBody::widget(['body' => $post->body])?>
+                        </h3>
                     </a>
                     <p class="post-meta">
                         Posted by <a href="#"><?=$post->posted_by?></a> on <?=$post->created_at?>
