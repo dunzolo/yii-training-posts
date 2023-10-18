@@ -36,7 +36,7 @@ class PostArticleController extends Controller
 
     if($model->load(Yii::$app->request->post())){
       $model->posted_by = Yii::$app->user->identity->getId();
-      if($model->save(false)){
+      if($model->save()){
         return $this->redirect(['view','id'=>$model->id]);
       }
     }
@@ -87,7 +87,7 @@ class PostArticleController extends Controller
       $posts->posted_by = rand(1,3);
       $posts->title = $faker->words(random_int(5,10), true);
       $posts->body = $faker->paragraph(random_int(3,10));
-      $posts->save(false);
+      $posts->save();
     }
   }
 }

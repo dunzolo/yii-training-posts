@@ -42,10 +42,11 @@ return [
         'enablePrettyUrl' => true,
         'showScriptName' => false,
         'rules' => [
-          //indico ciò che il server prende in ingresso e cosa fa visualizzare
-          'product/detail/<id:\d+>/<name:\w+>'=>'product/detail',
-          'post-article/view/<id:\d+>'=>'post-article/view',
-          'post-article/update/<id:\d+>'=>'post-article/update'
+          # indico ciò che il server prende in ingresso e cosa fa visualizzare
+          'product/detail/<id:\d+>/<name:\w+>' => 'product/detail',
+          'post-article/view/<id:\d+>' => 'post-article/view',
+          'post-article/update/<id:\d+>' => 'post-article/update',
+          'posts/post/<id>' => 'posts/post'
         ],
     ],
 
