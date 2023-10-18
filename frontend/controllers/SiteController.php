@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use frontend\models\Posts;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -75,7 +76,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+      $posts = Posts::find()->all();
+        return $this->render('index', ['posts' => $posts]);
     }
 
     /**
