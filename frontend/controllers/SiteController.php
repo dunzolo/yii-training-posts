@@ -79,9 +79,9 @@ class SiteController extends Controller
       #echo Posts::find()->where(['status' => 1])->count();
 
       $posts = Posts::find()
-        ->select('title,body,created_at,posted_by')
+        ->select('id,title,body,created_at,posted_by')
         ->where(['status' => 1])
-        ->orderBy('title ASC')
+        #->orderBy('title ASC')
         ->limit(10)
         ->all();
 

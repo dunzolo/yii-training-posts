@@ -15,7 +15,7 @@ $this->title = 'My Yii Application Blog';
             <?php foreach ($posts as $post):?>
                 <?=Html::img(Url::to('@web/img/home-bg.jpg'), ['class' => 'w-100', 'alt' => 'image-post'])?>
                 <div class="post-preview">
-                    <a href="post.html">
+                    <a href="<?=Url::toRoute(['/posts/post', 'id' => $post->id])?>">
                         <h2 class="post-title"><?=$post->title?></h2>
                         <h3 class="post-subtitle"><?=$post->body?></h3>
                     </a>
