@@ -76,7 +76,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-      $posts = Posts::find()->all();
+      $posts = Posts::find()
+          ->select('title,body,created_at,posted_by')
+          ->where(['status' => 1])
+          ->all();
         return $this->render('index', ['posts' => $posts]);
     }
 
