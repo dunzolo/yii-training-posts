@@ -2,6 +2,7 @@
 namespace frontend\controllers;
 
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\filters\AccessControl;
 use frontend\models\Posts;
@@ -26,7 +27,14 @@ class PostArticleController extends Controller
 
   public function actionIndex(){
     $user_id = Yii::$app->user->identity->id;
-    $model = Posts::find()->where(['posted_by'=>$user_id])->all();
+    //$model = Posts::find()->where(['posted_by'=>$user_id])->all();
+
+    $model = new ActiveDataProvider([
+      'query' => Posts::find()->where(['posted_by'=>$user_id]),
+      'pagination'=>[
+        'pageSize'=>10,
+      ]
+    ]);
 
     return $this->render('index',['model'=>$model]);
   }

@@ -3,6 +3,7 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use \yii\grid\GridView;
 
 $this->title = 'My Yii Articles';
 ?>
@@ -12,7 +13,24 @@ $this->title = 'My Yii Articles';
     <h2>Lists of articles</h2>
     <a href="<?=Url::to(['create'])?>" class="btn btn-success">Create Post</a>
   </div>
-  <table class="table table-striped table-bordered">
+
+  <?php
+    echo GridView::widget([
+      'dataProvider' => $model,
+      'columns' => [
+        ['class' => 'yii\grid\SerialColumn'],
+        'posted_by',
+        'title',
+        [
+          'attribute' => 'created_at',
+          'format' => ['date', 'Y-m-d']
+        ],
+        ['class' => 'yii\grid\ActionColumn']
+      ]
+    ])
+  ?>
+
+<!--  <table class="table table-striped table-bordered">
     <tr>
       <th>SN</th>
       <th>ID</th>
@@ -21,21 +39,21 @@ $this->title = 'My Yii Articles';
       <th>Action</th>
     </tr>
     <?php
-    $n = 1;
-    foreach($model as $post):?>
+/*    $n = 1;
+    foreach($model as $post):*/?>
       <tr>
-        <td><?=$n?></td>
-        <td><?=$post->id?></td>
-        <td><?=$post->title?></td>
-        <td><?=$post->created_at?></td>
+        <td><?php /*=$n*/?></td>
+        <td><?php /*=$post->id*/?></td>
+        <td><?php /*=$post->title*/?></td>
+        <td><?php /*=$post->created_at*/?></td>
         <td>
-          <a href="<?=Url::to(['view','id'=>$post->id])?>" class="btn btn-primary">View</a>
-          <a href="<?=Url::to(['update','id'=>$post->id])?>" class="btn btn-warning">Update</a>
-          <a href="<?=Url::to(['delete','id'=>$post->id])?>" class="btn btn-danger">Delete</a>
+          <a href="<?php /*=Url::to(['view','id'=>$post->id])*/?>" class="btn btn-primary">View</a>
+          <a href="<?php /*=Url::to(['update','id'=>$post->id])*/?>" class="btn btn-warning">Update</a>
+          <a href="<?php /*=Url::to(['delete','id'=>$post->id])*/?>" class="btn btn-danger">Delete</a>
         </td>
       </tr>
       <?php
-      $n++;
-    endforeach; ?>
-  </table>
+/*      $n++;
+    endforeach; */?>
+  </table>-->
 </div>
