@@ -68,4 +68,8 @@ class User extends \yii\db\ActiveRecord
             'verification_token' => 'Verification Token',
         ];
     }
+    
+    public function getPosts(){
+      return $this->hasMany(Posts::class, ['posted_by' => 'id']);
+    }
 }
