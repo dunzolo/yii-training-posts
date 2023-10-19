@@ -23,7 +23,7 @@ $this->title = 'My Yii Articles';
     ],
     'columns' => [
       ['class' => 'yii\grid\SerialColumn'],
-      'posted_by',
+      'user.username',
       'title',
       [
         'attribute' => 'created_at',

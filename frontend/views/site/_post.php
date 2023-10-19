@@ -13,7 +13,7 @@ use frontend\components\SmallBody;
     </h3>
   </a>
   <p class="post-meta">
-    Posted by <a href="#"><?=$model->posted_by?></a> on <?=$model->created_at?>
+    Posted by <a href="#"><?=$model->user->username?></a> on <?=$model->created_at?>
   </p>
 </div>
 <hr>

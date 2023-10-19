@@ -69,4 +69,8 @@ class Posts extends \yii\db\ActiveRecord
       'created_at' => 'Created At',
     ];
   }
+  
+  public function getUser(){
+    return $this->hasOne(User::class, ['id' => 'posted_by']);
+  }
 }
