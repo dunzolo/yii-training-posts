@@ -32,5 +32,3 @@ use yii\widgets\LinkPager;
     </div>
   </div>
 </div>
-
-

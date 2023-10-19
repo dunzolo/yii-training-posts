@@ -1,9 +1,8 @@
 <?php
 
-namespace frontend\models;
+namespace backend\models;
 
 use Yii;
-use yii\behaviors\SluggableBehavior;
 
 /**
  * This is the model class for table "posts".
@@ -27,28 +26,18 @@ class Posts extends \yii\db\ActiveRecord
     return 'posts';
   }
   
-  public function behaviors()
-  {
-    return[
-      [
-        'class' => SluggableBehavior::class,
-        'attribute' => 'title',
-        'ensureUnique' => true
-      ]
-    ];
-  }
-  
   /**
    * {@inheritdoc}
    */
   public function rules()
   {
     return [
-      [['title', 'body'], 'required'],
+      [['posted_by', 'title', 'body'], 'required'],
       [['body'], 'string'],
       [['status'], 'integer'],
-      [['posted_by', 'created_at', 'image'], 'safe'],
-      [['title'], 'string', 'max' => 100],
+      [['created_at'], 'safe'],
+      [['posted_by', 'title'], 'string', 'max' => 100],
+      [['image'], 'string', 'max' => 200],
       [['slug'], 'string', 'max' => 255],
     ];
   }
