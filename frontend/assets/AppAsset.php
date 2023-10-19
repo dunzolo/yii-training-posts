@@ -20,7 +20,7 @@ class AppAsset extends AssetBundle
       //'css/site.css'
     ];
     public $js = [
-      'vendor/jquery/jquery.min.js',
+//      'vendor/jquery/jquery.min.js',
       'vendor/popper/popper.min.js',
       'vendor/bootstrap/js/bootstrap.min.js',
       'js/clean-blog.js'

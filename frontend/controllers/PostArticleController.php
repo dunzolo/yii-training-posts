@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use http\Message;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -97,5 +98,16 @@ class PostArticleController extends Controller
       $posts->body = $faker->paragraph(random_int(3,10));
       $posts->save();
     }
+  }
+  
+  public function actionPjax(){
+    $message = Yii::$app->request->post('message');
+    $response = null;
+    
+    if(!is_null($message)){
+      $response = 'Your message is: '.$message;
+    }
+    
+    return $this->render('pjax', ['response' => $response]);
   }
 }
