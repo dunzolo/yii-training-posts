@@ -7,6 +7,7 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\filters\AccessControl;
 use frontend\models\Posts;
+use yii\web\UploadedFile;
 
 class PostArticleController extends Controller
 {
@@ -44,7 +45,14 @@ class PostArticleController extends Controller
     $model = new Posts();
     
     if($model->load(Yii::$app->request->post())){
+      
       $model->posted_by = Yii::$app->user->identity->getId();
+      
+      $image = UploadedFile::getInstance($model, 'image');
+      $image->saveAs('img/upload/'.$image->baseName.'.'.$image->extension);
+      
+      $model->image = $image->baseName.'.'.$image->extension;
+      
       if($model->save()){
         return $this->redirect(['view','id'=>$model->id]);
       }
