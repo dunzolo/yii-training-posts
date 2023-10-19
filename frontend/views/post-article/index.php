@@ -18,7 +18,7 @@ $this->title = 'My Yii Articles';
   echo GridView::widget([
     'dataProvider' => $model,
     'pager' => [
-      'linkOptions' => ['class' => 'page-link'],
+      'linkContainerOptions' => ['class' => 'page-link'],
       'pageCssClass' => ['class' => 'page-item'],
     ],
     'columns' => [

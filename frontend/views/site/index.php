@@ -19,7 +19,7 @@ $this->title = 'My Yii Application Blog';
         'dataProvider' => $posts,
         'itemView' => '_post',
         'pager' => [
-          'linkOptions' => ['class' => 'page-link'],
+          'linkContainerOptions' => ['class' => 'page-link'],
           'pageCssClass' => ['class' => 'page-item'],
         ],
       ])
