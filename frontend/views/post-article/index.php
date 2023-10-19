@@ -13,24 +13,28 @@ $this->title = 'My Yii Articles';
     <h2>Lists of articles</h2>
     <a href="<?=Url::to(['create'])?>" class="btn btn-success">Create Post</a>
   </div>
-
+  
   <?php
-    echo GridView::widget([
-      'dataProvider' => $model,
-      'columns' => [
-        ['class' => 'yii\grid\SerialColumn'],
-        'posted_by',
-        'title',
-        [
-          'attribute' => 'created_at',
-          'format' => ['date', 'Y-m-d']
-        ],
-        ['class' => 'yii\grid\ActionColumn']
-      ]
-    ])
+  echo GridView::widget([
+    'dataProvider' => $model,
+    'pager' => [
+      'linkOptions' => ['class' => 'page-link'],
+      'pageCssClass' => ['class' => 'page-item'],
+    ],
+    'columns' => [
+      ['class' => 'yii\grid\SerialColumn'],
+      'posted_by',
+      'title',
+      [
+        'attribute' => 'created_at',
+        'format' => ['date', 'Y-m-d']
+      ],
+      ['class' => 'yii\grid\ActionColumn']
+    ]
+  ])
   ?>
 
-<!--  <table class="table table-striped table-bordered">
+  <!--  <table class="table table-striped table-bordered">
     <tr>
       <th>SN</th>
       <th>ID</th>
@@ -39,8 +43,8 @@ $this->title = 'My Yii Articles';
       <th>Action</th>
     </tr>
     <?php
-/*    $n = 1;
-    foreach($model as $post):*/?>
+  /*    $n = 1;
+      foreach($model as $post):*/?>
       <tr>
         <td><?php /*=$n*/?></td>
         <td><?php /*=$post->id*/?></td>
@@ -53,7 +57,7 @@ $this->title = 'My Yii Articles';
         </td>
       </tr>
       <?php
-/*      $n++;
-    endforeach; */?>
+  /*      $n++;
+      endforeach; */?>
   </table>-->
 </div>
