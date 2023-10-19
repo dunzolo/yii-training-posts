@@ -48,8 +48,11 @@ class PostArticleController extends Controller
       
       $model->posted_by = Yii::$app->user->identity->getId();
       
-      $image = UploadedFile::getInstance($model, 'image');
-      $image->saveAs('img/upload/'.$image->baseName.'.'.$image->extension);
+      $images = UploadedFile::getInstances($model, 'image');
+      
+      foreach ($images as $image){
+        $image->saveAs('img/upload/'.$image->baseName.'.'.$image->extension);
+      }
       
       $model->image = $image->baseName.'.'.$image->extension;
       

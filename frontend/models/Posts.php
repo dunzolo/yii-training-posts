@@ -50,7 +50,7 @@ class Posts extends \yii\db\ActiveRecord
       [['posted_by', 'created_at'], 'safe'],
       [['title'], 'string', 'max' => 100],
       [['slug'], 'string', 'max' => 255],
-      [['image'], 'file', 'extensions' => 'jpg, png, gif']
+      [['image'], 'file', 'extensions' => 'jpg, png, gif', 'maxFiles' => 3]
     ];
   }
   
