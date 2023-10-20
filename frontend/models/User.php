@@ -22,54 +22,58 @@ use Yii;
  */
 class User extends \yii\db\ActiveRecord
 {
-    /**
-     * {@inheritdoc}
-     */
-    public static function tableName()
-    {
-        return 'user';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function rules()
-    {
-        return [
-            [['username', 'email', 'auth_key', 'password_hash', 'created_at', 'updated_at'], 'required'],
-            [['status', 'created_at', 'updated_at'], 'integer'],
-            [['name'], 'string', 'max' => 100],
-            [['username', 'email', 'password_hash', 'password_reset_token', 'verification_token'], 'string', 'max' => 255],
-            [['phone'], 'string', 'max' => 20],
-            [['auth_key'], 'string', 'max' => 32],
-            [['username'], 'unique'],
-            [['email'], 'unique'],
-            [['password_reset_token'], 'unique'],
-        ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'name' => 'Name',
-            'username' => 'Username',
-            'phone' => 'Phone',
-            'email' => 'Email',
-            'status' => 'Status',
-            'auth_key' => 'Auth Key',
-            'password_hash' => 'Password Hash',
-            'password_reset_token' => 'Password Reset Token',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'verification_token' => 'Verification Token',
-        ];
-    }
-    
-    public function getPosts(){
-      return $this->hasMany(Posts::class, ['posted_by' => 'id']);
-    }
+  /**
+   * {@inheritdoc}
+   */
+  public static function tableName()
+  {
+    return 'user';
+  }
+  
+  public $old_password;
+  public $new_password;
+  
+  /**
+   * {@inheritdoc}
+   */
+  public function rules()
+  {
+    return [
+      [['username', 'email', 'auth_key', 'password_hash', 'created_at', 'updated_at'], 'required'],
+      [['status', 'created_at', 'updated_at'], 'integer'],
+      [['name'], 'string', 'max' => 100],
+      [['username', 'email', 'password_hash', 'password_reset_token', 'verification_token'], 'string', 'max' => 255],
+      [['phone'], 'string', 'max' => 20],
+      [['auth_key'], 'string', 'max' => 32],
+      [['username'], 'unique'],
+      [['email'], 'unique'],
+      [['password_reset_token'], 'unique'],
+      [['old_password', 'new_password'], 'required'],
+    ];
+  }
+  
+  /**
+   * {@inheritdoc}
+   */
+  public function attributeLabels()
+  {
+    return [
+      'id' => 'ID',
+      'name' => 'Name',
+      'username' => 'Username',
+      'phone' => 'Phone',
+      'email' => 'Email',
+      'status' => 'Status',
+      'auth_key' => 'Auth Key',
+      'password_hash' => 'Password Hash',
+      'password_reset_token' => 'Password Reset Token',
+      'created_at' => 'Created At',
+      'updated_at' => 'Updated At',
+      'verification_token' => 'Verification Token',
+    ];
+  }
+  
+  public function getPosts(){
+    return $this->hasMany(Posts::class, ['posted_by' => 'id']);
+  }
 }

@@ -40,6 +40,7 @@ use yii\helpers\Html;
             </a>
             <ul class="dropdown-menu text-center">
               <li><a href="<?=Url::to(['/post-article'])?>">Post Articles</a></li>
+              <li><a href="<?=Url::to(['/change-password'])?>">Change Password</a></li>
               <li><a href="<?=Url::to(['/post-article/pjax'])?>">Pjax</a></li>
               <li class="divider"></li>
               <li class="nav-item">
